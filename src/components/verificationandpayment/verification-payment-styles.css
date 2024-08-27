@@ -1,0 +1,94 @@
+.verification-payment-main-container {
+  background-color: #f8f9fa; /* Lighter background color */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 97vh;
+  padding: 20px; /* Added padding */
+}
+
+.verification-payment-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  margin: 20px 0; /* Added margin */
+}
+
+.card {
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px; /* Simplified shadow */
+  border-radius: 20px; /* Slightly more rounded corners */
+  width: 28%; /* Adjusted width */
+  padding: 2rem; /* Added padding */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out; /* Added hover effect */
+  margin: 20px; /* Added margin */
+}
+
+.card:hover {
+  transform: scale(1.05); /* Scale on hover */
+}
+
+.card1 {
+  background-image: linear-gradient(135deg, #9be15d 0%, #00e3ae 100%);
+}
+
+.logout-button {
+  position: absolute;
+  top: 40px; /* Adjust top positioning as needed */
+  right: 50px; /* Adjust right positioning as needed */
+  background-color: #ff4d4d; /* Red background for visibility */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.card2 {
+  background-image: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+}
+
+.card3 {
+  background-image: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.card-heading {
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.8rem;
+  text-shadow: 2px 3px 6px rgba(0, 0, 0, 0.3);
+  text-align: center; /* Centered text */
+}
+
+@media screen and (max-width: 768px) {
+  .verification-payment-container {
+    flex-direction: column;
+    height: auto;
+    margin: 1rem 0;
+  }
+
+  .card {
+    width: 80%;
+    margin-bottom: 1rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .card {
+    width: 90%;
+    padding: 1.5rem;
+  }
+
+  .card-heading {
+    font-size: 1.5rem;
+  }
+}

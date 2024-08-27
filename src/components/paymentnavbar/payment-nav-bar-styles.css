@@ -1,0 +1,21 @@
+.navigation-container {
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: green;
+  margin: 0px;
+  padding-right: 10%;
+}
+.nav-link {
+  margin: 10px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 1px;
+  cursor: pointer;
+  opacity: 0.8;
+  text-decoration: none;
+}
+.nav-link.active {
+  opacity: 1;
+}

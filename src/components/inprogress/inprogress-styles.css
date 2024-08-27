@@ -1,0 +1,170 @@
+.verified-main-container {
+  overflow-x: scroll;
+  /* border: 1px solid red; */
+}
+.verified-headings-container {
+  display: flex;
+  /* border: 1px solid red; */
+  width: 100%;
+}
+.verified-title {
+  font-weight: 700;
+}
+.inprogress-serial-no {
+  flex: 0 0 4rem;
+  /* border: 1px solid yellowgreen; */
+}
+.inprogress-name {
+  /* border: 1px solid yellowgreen; */
+  flex: 0 0 18rem;
+}
+.inprogress-user-phone-no {
+  /* border: 1px solid yellowgreen; */
+  flex: 0 0 12rem;
+}
+.inprogress-email-address {
+  /* border: 1px solid yellowgreen; */
+  flex: 0 0 20rem;
+}
+.inprogress-user-bank-name {
+  /* border: 1px solid yellowgreen; */
+  flex: 0 0 20rem;
+}
+.inprogress-acc-holder-name {
+  /* border: 1px solid yellowgreen; */
+  flex: 0 0 20rem;
+}
+.inprogress-user-acc-number {
+  /* border: 1px solid yellowgreen; */
+  flex: 0 0 16rem;
+}
+.inprogress-acc-type {
+  /* border: 1px solid yellowgreen; */
+  flex: 0 0 8rem;
+}
+.inprogress-user-bank-transit-no {
+  flex: 0 0 15rem;
+  /* border: 1px solid yellowgreen; */
+}
+.inprogress-institute-no {
+  flex: 0 0 15rem;
+  /* border: 1px solid yellowgreen; */
+}
+.inprogress-user-govt-doc-id {
+  flex: 0 0 18rem;
+  /* border: 1px solid yellowgreen; */
+}
+.inprogress-govt-doc-name {
+  flex: 0 0 20rem;
+  /* border: 1px solid yellowgreen; */
+}
+.inprogress-user-doc-no {
+  flex: 0 0 16rem;
+  /* border: 1px solid yellowgreen; */
+}
+.inprogress-user-photos {
+  flex: 0 0 10rem;
+  /* border: 1px solid yellowgreen; */
+}
+.inprogress-user-doc-expiry-date {
+  flex: 0 0 200px;
+  /* border: 1px solid yellowgreen; */
+}
+.inprogress-date-of-birth {
+  flex: 0 0 8rem;
+  /* border: 1px solid yellowgreen; */
+}
+.inprogress-verification {
+  flex: 0 0 8rem;
+  /* border: 1px solid yellowgreen; */
+}
+.verification-input-container {
+  /* border: 1px solid yellowgreen; */
+  display: flex;
+}
+.verification-radio-button {
+  cursor: pointer;
+}
+.inprogress-user-details-container {
+  display: flex;
+  align-items: center;
+}
+/*
+.inprogress-user-index {
+  flex: 0 0 80px;
+}
+.inprogress-user-name {
+  flex: 0 0 250px;
+}
+.inprogress-user-phone-no {
+  flex: 0 0 150px;
+}
+.verified-user-email-id {
+  flex: 0 0 250px;
+}
+.verified-user-bank-name {
+  flex: 0 0 250px;
+}
+.verified-user-acc-holder-name {
+  flex: 0 0 250px;
+}
+.verified-user-acc-number {
+  flex: 0 0 250px;
+}
+.verified-user-acc-type {
+  flex: 0 0 130px;
+}
+.verified-user-bank-transit-no {
+  flex: 0 0 250px;
+}
+.verified-user-institute-no {
+  flex: 0 0 250px;
+}
+.verified-user-govt-doc-id {
+  flex: 0 0 250px;
+}
+.verified-user-doc-name {
+  flex: 0 0 250px;
+}
+.verified-user-doc-no {
+  flex: 0 0 250px;
+}
+.verified-user-images {
+  flex: 0 0 250px;
+  border: 1px solid red;
+  display: flex;
+  align-items: center;
+}
+.profile-check-box {
+  border: 1px solid red;
+  cursor: pointer;
+}
+.image-container {
+  border: 2px solid green;
+  width: 150px;
+} */
+
+.verified-profile-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+}
+.verified-id-front-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+}
+.verified-id-back-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+}
+.verified-user-doc-expiry-date {
+  flex: 0 0 200px;
+}
+.verified-user-dob {
+  flex: 0 0 150px;
+}
+.inprogress-horizontal-row {
+  width: 350%;
+}

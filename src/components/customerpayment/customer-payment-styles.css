@@ -1,0 +1,47 @@
+.customer-main-container {
+  overflow-x: scroll;
+}
+
+.customer-payment-container {
+  display: flex;
+  justify-content: space-between;
+}
+.table-heading-container {
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+}
+.customer-row {
+  margin-right: 1rem;
+}
+.customer-h-row {
+  font-weight: 700;
+}
+.s-no {
+  /* border: 1px solid red;  */
+  flex: 0 0 50px;
+}
+.customer-id {
+  flex: 0 0 280px;
+}
+.customer-name {
+  flex: 0 0 250px;
+}
+.job-id {
+  flex: 0 0 250px;
+}
+.service-id {
+  flex: 0 0 320px;
+}
+.service-name {
+  flex: 0 0 250px;
+}
+.paid-amount {
+  flex: 0 0 150px;
+}
+.transaction-id {
+  flex: 0 0 200px;
+}
+.payment-horizantal-row {
+  width: 155%;
+}

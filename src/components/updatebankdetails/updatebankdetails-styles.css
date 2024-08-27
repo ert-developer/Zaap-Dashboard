@@ -1,0 +1,40 @@
+.inprogress-container {
+    padding: 20px;
+}
+
+.inprogress-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.inprogress-table th,
+.inprogress-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+
+.accept-button,
+.reject-button {
+    margin: 5px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.accept-button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.reject-button {
+    background-color: #f44336;
+    color: white;
+}
+
+.accept-button:hover,
+.reject-button:hover {
+    opacity: 0.8;
+}

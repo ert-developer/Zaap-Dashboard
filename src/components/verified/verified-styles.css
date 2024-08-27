@@ -1,0 +1,117 @@
+.verified-main-container {
+  overflow-x: scroll;
+  /* border: 1px solid red; */
+}
+.verified-headings-container {
+  display: flex;
+  /* border: 1px solid red; */
+  width: 100%;
+}
+.verified-title {
+  font-weight: 700;
+}
+.serial-no {
+  flex: 0 0 80px;
+  /* border: 2px solid yellowgreen; */
+}
+.name {
+  /* border: 2px solid yellowgreen; */
+  flex: 0 0 250px;
+}
+.phone-number {
+  /* border: 2px solid yellowgreen; */
+  flex: 0 0 200px;
+}
+.email-address {
+  /* border: 2px solid yellowgreen; */
+  flex: 0 0 300px;
+}
+.bank-name {
+  /* border: 2px solid yellowgreen; */
+  flex: 0 0 300px;
+}
+.acc-holder-name {
+  /* border: 2px solid yellowgreen; */
+  flex: 0 0 300px;
+}
+.acc-number {
+  /* border: 2px solid yellowgreen; */
+  flex: 0 0 300px;
+}
+.acc-type {
+  /* border: 2px solid yellowgreen; */
+  flex: 0 0 150px;
+}
+.bank-transit-no {
+  flex: 0 0 300px;
+}
+.institute-no {
+  flex: 0 0 250px;
+}
+.type-of-govt-id {
+  flex: 0 0 250px;
+}
+.govt-doc-name {
+  flex: 0 0 250px;
+}
+.govt-id-no {
+  flex: 0 0 250px;
+}
+.govt-doc-expiry-date {
+  flex: 0 0 200px;
+}
+.date-of-birth {
+  flex: 0 0 150px;
+}
+.verified-user-details-container {
+  display: flex;
+  align-items: center;
+}
+.verified-user-index {
+  flex: 0 0 80px;
+}
+.verified-user-name {
+  flex: 0 0 200px;
+}
+.verified-user-phone-no {
+  flex: 0 0 150px;
+}
+.verified-user-email-id {
+  flex: 0 0 250px;
+}
+.verified-user-bank-name {
+  flex: 0 0 250px;
+}
+.verified-user-acc-holder-name {
+  flex: 0 0 250px;
+}
+.verified-user-acc-number {
+  flex: 0 0 250px;
+}
+.verified-user-acc-type {
+  flex: 0 0 130px;
+}
+.verified-user-bank-transit-no {
+  flex: 0 0 250px;
+}
+.verified-user-institute-no {
+  flex: 0 0 250px;
+}
+.verified-user-govt-doc-id {
+  flex: 0 0 250px;
+}
+.verified-user-doc-name {
+  flex: 0 0 250px;
+}
+.verified-user-doc-no {
+  flex: 0 0 250px;
+}
+.verified-user-doc-expiry-date {
+  flex: 0 0 200px;
+}
+.verified-user-dob {
+  flex: 0 0 150px;
+}
+.verified-horizantal-row {
+  width: 320%;
+}

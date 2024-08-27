@@ -1,0 +1,34 @@
+.service-payment-main-container {
+  overflow-x: scroll;
+}
+.customer-payment-container {
+  display: flex;
+  align-items: center;
+}
+.table-heading-container {
+  display: flex;
+}
+.s-no {
+  flex: 0 0 50px;
+}
+.service-p-id {
+  flex: 0 0 280px;
+}
+.service-p-name {
+  flex: 0 0 250px;
+}
+.bank-name {
+  flex: 0 0 200px;
+}
+.bank-acc-no {
+  flex: 0 0 250px;
+}
+.transaction-id {
+  flex: 0 0 200px;
+}
+.payment-received-status {
+  flex: 0 0 150px;
+}
+.service-harizantal-row {
+  width: 185%;
+}

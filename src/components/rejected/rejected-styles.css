@@ -1,0 +1,83 @@
+.rejected-main-container {
+  overflow-x: scroll;
+  /* border: 5px solid red; */
+}
+.rejected-headings-container {
+  display: flex;
+  width: 100%;
+}
+.verified-title {
+  font-weight: 700;
+}
+.rejected-serial-no {
+  flex: 0 0 4rem;
+  /* border: 1px solid yellowgreen; */
+}
+.rejected-user-name {
+  /* border: 1px solid yellowgreen; */
+  flex: 0 0 18rem;
+}
+.rejected-user-phone-no {
+  /* border: 1px solid yellowgreen; */
+  flex: 0 0 10rem;
+}
+.rejected-user-email-id {
+  /* border: 1px solid yellowgreen; */
+  flex: 0 0 18rem;
+}
+.rejected-user-bank-name {
+  /* border: 1px solid yellowgreen; */
+  flex: 0 0 18rem;
+}
+.rejected-user-acc-holder-name {
+  /* border: 1px solid yellowgreen; */
+  flex: 0 0 18rem;
+}
+.rejected-user-acc-number {
+  /* border: 1px solid yellowgreen; */
+  flex: 0 0 15rem;
+}
+.rejected-user-acc-type {
+  /* border: 1px solid yellowgreen; */
+  flex: 0 0 8rem;
+}
+.rejected-user-bank-transit-no {
+  flex: 0 0 16rem;
+  /* border: 1px solid yellowgreen; */
+}
+.rejected-user-institute-no {
+  flex: 0 0 16rem;
+  /* border: 1px solid yellowgreen; */
+}
+.rejected-user-govt-doc-id {
+  flex: 0 0 20rem;
+  /* border: 1px solid yellowgreen; */
+}
+.rejected-user-doc-name {
+  flex: 0 0 20rem;
+  /* border: 1px solid yellowgreen; */
+}
+.rejected-user-doc-no {
+  flex: 0 0 16rem;
+  /* border: 1px solid yellowgreen; */
+}
+.rejected-images {
+  flex: 0 0 10rem;
+  /* border: 1px solid yellowgreen; */
+}
+.rejected-expiry-date {
+  flex: 0 0 10rem;
+  /* border: 1px solid yellowgreen; */
+}
+.rejected-user-dob {
+  flex: 0 0 150px;
+  /* border: 1px solid yellowgreen; */
+}
+.rejected-user-details-container {
+  display: flex;
+  align-items: center;
+}
+
+.rejected-horizantal-row {
+  width: 307%;
+}

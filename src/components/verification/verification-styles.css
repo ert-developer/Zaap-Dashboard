@@ -1,0 +1,9 @@
+.save-button {
+  height: 32px;
+  width: 80px;
+  border: none;
+  background-color: cadetblue;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+}
