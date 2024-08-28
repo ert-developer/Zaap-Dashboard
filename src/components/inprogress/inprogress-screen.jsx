@@ -69,19 +69,20 @@ const ProgressScreen = () => {
             Acc Number
           </p>
           <p className="verified-title inprogress-acc-type">Acc Type</p>
-          <p className="verified-title inprogress-user-bank-transit-no">
+          {/* <p className="verified-title inprogress-user-bank-transit-no">
             Bank Transit Number
           </p>
           <p className="verified-title inprogress-institute-no">
             {" "}
             Institute Number
-          </p>
+          </p> */}
+          <p className="verified-title inprogress-institute-no">IFSC code</p>
           <p className="verified-title inprogress-user-govt-doc-id">
             Type of Govt Issue ID
           </p>
-          <p className="verified-title inprogress-govt-doc-name">
+          {/* <p className="verified-title inprogress-govt-doc-name">
             Document Name
-          </p>
+          </p> */}
           <p className="verified-title inprogress-user-doc-no">ID Number</p>
           <p className="verified-title inprogress-user-photos">Profile Photo</p>
           <p className="verified-title inprogress-user-photos">
@@ -116,18 +117,19 @@ const ProgressScreen = () => {
                       {item.accountNumber}
                     </p>
                     <p className="inprogress-acc-type">{item.accountType}</p>
-                    <p className="inprogress-user-bank-transit-no">
+                    {/* <p className="inprogress-user-bank-transit-no">
                       {item.bankTransitNumber}
                     </p>
                     <p className="inprogress-institute-no">
                       {item.institutionNumber}
-                    </p>
+                    </p> */}
+                    <p className="inprogress-institute-no">{item.ifsc_code}</p>
                     <p className="inprogress-user-govt-doc-id">
                       {item.typeOfGovtIssueId}
                     </p>
-                    <p className="inprogress-govt-doc-name">
+                    {/* <p className="inprogress-govt-doc-name">
                       {item.documentName}
-                    </p>
+                    </p> */}
                     <p className="inprogress-user-doc-no">
                       {item.docsIdNumber}
                     </p>

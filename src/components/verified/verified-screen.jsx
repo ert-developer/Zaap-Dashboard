@@ -8,7 +8,7 @@ const VerifiedScreen = () => {
     (state) => state.verificationReducer.verificationList
   );
 
-  // console.log("This is Verified List :", verifiedList);
+  console.log("This is Verified List :", verifiedList);
 
   return (
     <>
@@ -23,12 +23,13 @@ const VerifiedScreen = () => {
           <p className="verified-title acc-holder-name">Acc Holder Name</p>
           <p className="verified-title acc-number">Acc Number</p>
           <p className="verified-title acc-type">Acc Type</p>
-          <p className="verified-title bank-transit-no">Bank Transit Number</p>
-          <p className="verified-title institute-no"> Institute Number</p>
+          {/* <p className="verified-title bank-transit-no">Bank Transit Number</p> */}
+          <p className="verified-title ifsc-code"> IFSC code</p>
+          {/* <p className="verified-title institute-no"> Institute Number</p> */}
           <p className="verified-title type-of-govt-id">
             Type of Govt Issue ID
           </p>
-          <p className="verified-title govt-doc-name">Document Name</p>
+          {/* <p className="verified-title govt-doc-name">Document Name</p> */}
           <p className="verified-title govt-id-no">ID Number</p>
           <p className="verified-title govt-id-no">Profile Image</p>
           <p className="verified-title govt-id-no">ID Front Image</p>
@@ -57,18 +58,19 @@ const VerifiedScreen = () => {
                       {item.accountNumber}
                     </p>
                     <p className="verified-user-acc-type">{item.accountType}</p>
-                    <p className="verified-user-bank-transit-no">
+                    {/* <p className="verified-user-bank-transit-no">
                       {item.bankTransitNumber}
                     </p>
                     <p className="verified-user-institute-no">
                       {item.institutionNumber}
-                    </p>
+                    </p> */}
+                    <p className="verified-user-ifsc-code">{item.ifsc_code}</p>
                     <p className="verified-user-govt-doc-id">
                       {item.typeOfGovtIssueId}
                     </p>
-                    <p className="verified-user-doc-name">
+                    {/* <p className="verified-user-doc-name">
                       {item.documentName}
-                    </p>
+                    </p> */}
                     <p className="verified-user-doc-no">{item.docsIdNumber}</p>
                     <div className="verified-user-doc-no">
                       <Zoom>

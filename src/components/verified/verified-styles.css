@@ -36,11 +36,15 @@
 }
 .acc-number {
   /* border: 2px solid yellowgreen; */
-  flex: 0 0 300px;
+  flex: 0 0 250px;
 }
 .acc-type {
   /* border: 2px solid yellowgreen; */
-  flex: 0 0 150px;
+  flex: 0 0 130px;
+}
+.ifsc-code {
+  /* border: 2px solid yellowgreen; */
+  flex: 0 0 160px;
 }
 .bank-transit-no {
   flex: 0 0 300px;
@@ -96,6 +100,9 @@
 }
 .verified-user-institute-no {
   flex: 0 0 250px;
+}
+.verified-user-ifsc-code {
+  flex: 0 0 160px;
 }
 .verified-user-govt-doc-id {
   flex: 0 0 250px;

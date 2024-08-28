@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { fireStoreDB } from '../../firebase/firebase-config';
 import { collection, getDocs } from 'firebase/firestore';
-import './CancelledJobsScreen.css'; // Import the CSS file
+import './CancelledJobsScreen.css';
 
 const CancelledJobsScreen = () => {
   const [cancelledJobs, setCancelledJobs] = useState([]);

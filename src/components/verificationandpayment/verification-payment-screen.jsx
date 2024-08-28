@@ -19,7 +19,7 @@ const VerificationPaymentContainer = ({ onLogout }) => {
   };
 
   const onClickPayment = () => {
-    navigate("/customer-payment");
+    navigate("/payment");
   };
 
   const onClickCancelledJobs = () => {
@@ -30,8 +30,8 @@ const VerificationPaymentContainer = ({ onLogout }) => {
     try {
       await signOut(auth);
       console.log("User successfully logged out");
-      localStorage.removeItem("isLoggedIn"); // Clear login state from localStorage
-      if (onLogout) onLogout(); // Call onLogout to update state in App component
+      localStorage.removeItem("isLoggedIn");
+      if (onLogout) onLogout();
       navigate("/", { replace: true });
       window.location.reload();
     } catch (error) {

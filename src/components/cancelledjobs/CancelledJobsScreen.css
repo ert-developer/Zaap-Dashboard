@@ -8,12 +8,16 @@
     width: 100%;
   }
   
-  .cancelled-jobs-container h1 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #fff;
-    font-size: 2rem;
-  }
+  /* CancelledJobsScreen.css */
+
+.cancelled-jobs-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #464183; /* Ensure the color is distinct */
+  font-size: 2rem; /* Increase font size if needed */
+  font-weight: bold; /* Make the heading bold */
+}
+
   
   .cancelled-jobs-table {
     width: 100%;

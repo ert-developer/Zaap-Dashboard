@@ -22,17 +22,18 @@ const RejectedScreen = () => {
           </p>
           <p className="verified-title rejected-user-acc-number">Acc Number</p>
           <p className="verified-title rejected-user-acc-type">Acc Type</p>
-          <p className="verified-title rejected-user-bank-transit-no">
+          {/* <p className="verified-title rejected-user-bank-transit-no">
             Bank Transit Number
           </p>
           <p className="verified-title rejected-user-institute-no">
             {" "}
             Institute Number
-          </p>
+          </p> */}
+          <p className="verified-title rejected-user-institute-no">IFSC code</p>
           <p className="verified-title rejected-user-govt-doc-id">
             Type of Govt Issue ID
           </p>
-          <p className="verified-title rejected-user-doc-name">Document Name</p>
+          {/* <p className="verified-title rejected-user-doc-name">Document Name</p> */}
           <p className="verified-title rejected-user-doc-no">ID Number</p>
           <p className="verified-title rejected-images">Profile Photo</p>
           <p className="verified-title rejected-images">ID Front Image</p>
@@ -63,18 +64,21 @@ const RejectedScreen = () => {
                       {item.accountNumber}
                     </p>
                     <p className="rejected-user-acc-type">{item.accountType}</p>
-                    <p className="rejected-user-bank-transit-no">
+                    {/* <p className="rejected-user-bank-transit-no">
                       {item.bankTransitNumber}
                     </p>
                     <p className="rejected-user-institute-no">
                       {item.institutionNumber}
+                    </p> */}
+                    <p className="rejected-user-institute-no">
+                      {item.ifsc_code}
                     </p>
                     <p className="rejected-user-govt-doc-id">
                       {item.typeOfGovtIssueId}
                     </p>
-                    <p className="rejected-user-doc-name">
+                    {/* <p className="rejected-user-doc-name">
                       {item.documentName}
-                    </p>
+                    </p> */}
                     <p className="rejected-user-doc-no">{item.docsIdNumber}</p>
                     <div className="rejected-images">
                       <Zoom>

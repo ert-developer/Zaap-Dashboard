@@ -34,14 +34,21 @@ const VerificationScreen = () => {
 
       const result = providerDevData.docs.map((docs) => {
         const DOB = docs.data().date_of_birth;
-        const date = new Date(DOB.seconds * 1000);
 
-        const day = ("0" + date.getDate()).slice(-2);
-        const month = ("0" + (date.getMonth() + 1)).slice(-2);
-        const year = date.getFullYear();
+        let formattedDate = "N/A";
 
-        // Concatenate into the desired format
-        const formattedDate = `${day}/${month}/${year}`;
+        // Check if DOB is a Firestore Timestamp
+        if (DOB && DOB.seconds) {
+          const date = new Date(DOB.seconds * 1000); // Convert Timestamp to Date
+          const day = ("0" + date.getDate()).slice(-2);
+          const month = ("0" + (date.getMonth() + 1)).slice(-2);
+          const year = date.getFullYear();
+          formattedDate = `${day}/${month}/${year}`; // Format as DD/MM/YYYY
+        }
+        // Check if DOB is a string in YYYY-MM-DD format
+        else if (typeof DOB === "string") {
+          formattedDate = moment(DOB).format("DD/MM/YYYY"); // Convert to DD/MM/YYYY format
+        }
 
         const dateOnCreate = docs.data().createdOn;
 
@@ -58,10 +65,11 @@ const VerificationScreen = () => {
           accountHolderName: docs.data().account_holder_name,
           accountNumber: docs.data().account_number,
           accountType: docs.data().account_type,
-          bankTransitNumber: docs.data().bank_transit_number,
-          institutionNumber: docs.data().institution_number,
+          // bankTransitNumber: docs.data().bank_transit_number,
+          // institutionNumber: docs.data().institution_number,
+          ifsc_code: docs.data().ifsc_code,
           typeOfGovtIssueId: docs.data().id_type,
-          documentName: docs.data().id_category,
+          // documentName: docs.data().id_category,
           docsIdNumber: docs.data().id_number,
           idExpirationDate: docs.data().id_expiration_date,
           dateOfBirth: formattedDate,
@@ -104,7 +112,9 @@ const VerificationScreen = () => {
           Inprogress
         </p>
         <p
-          className={`nav-link ${activeNav === "updatebankdetails" && "active"}`}
+          className={`nav-link ${
+            activeNav === "updatebankdetails" && "active"
+          }`}
           onClick={() => setActiveNav("updatebankdetails")}
         >
           Update Bank Details
