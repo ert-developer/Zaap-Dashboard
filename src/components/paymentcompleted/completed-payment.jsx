@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { fireStoreDB } from '../../firebase/firebase-config'; // Make sure the path to your firebase config is correct
-import './PaymentCompletedScreen2222.css';
+import './paymentCompletedScreen2222.css';
 
 const PaymentCompletedScreen2 = () => {
   const [paymentDetails, setPaymentDetails] = useState([]);
