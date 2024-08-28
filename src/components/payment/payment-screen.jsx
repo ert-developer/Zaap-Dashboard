@@ -1,6 +1,6 @@
 // NavBar.jsx
 import React, { useState } from "react";
-import PaymentCompletedScreen from "../paymentcompleted/paymentcompleted-screen";
+import PaymentCompletedScreen2 from "../paymentcompleted/paymentcompleted-screen";
 import AdsPaymentScreen from "../adspayment/ads-payment-screen";
 import CancelledJobsScreen from "../cancelledjobs/CancelledJobsScreen";
 import "./payment-styles.css"; // Assuming you have this CSS file for styling
@@ -13,13 +13,13 @@ const PaymentScreen = () => {
   const renderScreen = () => {
     switch (activeScreen) {
       case "paymentCompleted":
-        return <PaymentCompletedScreen />;
+        return <PaymentCompletedScreen2 />;
       case "adsPayment":
         return <AdsPaymentScreen />;
       case "cancelledJobs":
         return <CancelledJobsScreen />;
       default:
-        return <PaymentCompletedScreen />;
+        return <PaymentCompletedScreen2 />;
     }
   };
 

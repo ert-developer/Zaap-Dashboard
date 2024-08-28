@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { fireStoreDB } from '../../firebase/firebase-config'; // Make sure the path to your firebase config is correct
-import './PaymentCompletedScreen.css'; // Add appropriate CSS for styling
+import './PaymentCompletedScreen.css';
 
-const PaymentCompletedScreen = () => {
+const PaymentCompletedScreen2 = () => {
   const [paymentDetails, setPaymentDetails] = useState([]);
 
   useEffect(() => {
@@ -75,4 +75,4 @@ const PaymentCompletedScreen = () => {
   );
 };
 
-export default PaymentCompletedScreen;
+export default PaymentCompletedScreen2;
