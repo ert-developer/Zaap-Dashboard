@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { fireStoreDB } from "../../firebase/firebase-config";
-import { doc, updateDoc } from "firebase/firestore";
+import { doc, updateDoc, getDoc } from "firebase/firestore"; // Added getDoc import
 import PopupModal from "../../atoms/popupmodal/pop-up-modal";
 import { useState } from "react";
 import Zoom from "react-medium-image-zoom";
@@ -34,10 +34,27 @@ const ProgressScreen = () => {
 
       mailSenter(email, subject, textMsg, bodyText);
       const userDocRef = doc(fireStoreDB, "Provider_dev", userId);
+
       try {
-        const userRef = await updateDoc(userDocRef, {
+        // Update the verification status in the Provider_dev collection
+        await updateDoc(userDocRef, {
           isverified: verificationValue,
         });
+
+        // Fetch the provider_id from the Provider_dev collection
+        const userDocSnapshot = await getDoc(userDocRef);
+        if (userDocSnapshot.exists()) {
+          const providerId = userDocSnapshot.data().provider_id;
+
+          if (verificationValue === "verified" && providerId) {
+            // Update the isServiceProvider field in the User_dev collection using provider_id
+            const userDevDocRef = doc(fireStoreDB, "User_dev", providerId);
+            await updateDoc(userDevDocRef, {
+              isServiceProvider: true,
+            });
+          }
+        }
+
         setShowPopup(true);
       } catch (error) {
         console.log("This is Update Verify Status Error :", error);
@@ -161,7 +178,7 @@ const ProgressScreen = () => {
                       </Zoom>
                     </div>
                     <p className="inprogress-user-doc-expiry-date">
-                      {item.idExpirationDate}
+                      {item.idExpirationDate ? item.idExpirationDate : "N/A"}
                     </p>
                     <p className="inprogress-date-of-birth">
                       {item.dateOfBirth}

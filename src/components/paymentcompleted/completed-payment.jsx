@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { fireStoreDB } from "../../firebase/firebase-config"; // Make sure the path to your firebase config is correct
 import "./paymentCompletedScreen2222.css";
+import getPlatformFee from "./platformfee";
 
 const PaymentCompletedScreen2 = () => {
   const [paymentDetails, setPaymentDetails] = useState([]);
@@ -46,6 +47,7 @@ const PaymentCompletedScreen2 = () => {
             <th>Transaction Status</th>
             <th>Budget</th>
             <th>Tip Amount</th>
+            <th>PlatForm Fee</th>
             <th>Total Amount</th>
           </tr>
         </thead>
@@ -67,6 +69,7 @@ const PaymentCompletedScreen2 = () => {
               <td>{detail.transactionStatus}</td>
               <td>{detail.budget}</td>
               <td>{detail.tipAmount}</td>
+              <td>{getPlatformFee(detail.budget)}</td>
               <td>
                 {(parseFloat(detail.budget) || 0) +
                   (parseFloat(detail.tipAmount) || 0)}

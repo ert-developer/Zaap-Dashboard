@@ -55,6 +55,8 @@ const VerificationScreen = () => {
         const momentDate = moment(dateOnCreate);
         const dateFormate = momentDate.format("YYYY-MM-DD HH:mm:ss");
 
+        console.log('idexpedate', docs.data().id_expiration_date);
+
         return {
           createdDate: dateFormate,
           id: docs.id,
