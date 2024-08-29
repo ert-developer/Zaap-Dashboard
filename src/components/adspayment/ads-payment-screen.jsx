@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { collection, getDocs } from 'firebase/firestore';
-import { fireStoreDB } from '../../firebase/firebase-config'; // Ensure this path is correct
-import './AdsPaymentScreen.css'; // Add appropriate CSS for styling
+import React, { useEffect, useState } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { fireStoreDB } from "../../firebase/firebase-config"; // Ensure this path is correct
+import "./AdsPaymentScreen.css"; // Add appropriate CSS for styling
 
 const AdsPaymentScreen = () => {
   const [premiumAds, setPremiumAds] = useState([]);
@@ -9,14 +9,16 @@ const AdsPaymentScreen = () => {
   useEffect(() => {
     const fetchPremiumAds = async () => {
       try {
-        const querySnapshot = await getDocs(collection(fireStoreDB, 'Premium_ads'));
-        const adsData = querySnapshot.docs.map(doc => ({
+        const querySnapshot = await getDocs(
+          collection(fireStoreDB, "Premium_ads")
+        );
+        const adsData = querySnapshot.docs.map((doc) => ({
           id: doc.id,
-          ...doc.data()
+          ...doc.data(),
         }));
         setPremiumAds(adsData);
       } catch (error) {
-        console.error('Error fetching premium ads: ', error);
+        console.error("Error fetching premium ads: ", error);
       }
     };
 
@@ -36,11 +38,11 @@ const AdsPaymentScreen = () => {
           </tr>
         </thead>
         <tbody>
-          {premiumAds.map(ad => {
+          {premiumAds.map((ad) => {
             const totalAmount = ad.featuredAds * 50 + ad.spotlightAds * 150;
             return (
               <tr key={ad.id}>
-                <td>{ad.userId}</td>
+                <td>{ad.id}</td>
                 <td>{ad.featuredAds}</td>
                 <td>{ad.spotlightAds}</td>
                 <td>{totalAmount}</td> {/* Display calculated total amount */}

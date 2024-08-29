@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { fireStoreDB } from '../../firebase/firebase-config';
-import { collection, getDocs } from 'firebase/firestore';
-import './CancelledJobsScreen.css';
+import React, { useEffect, useState } from "react";
+import { fireStoreDB } from "../../firebase/firebase-config";
+import { collection, getDocs } from "firebase/firestore";
+import "./CancelledJobsScreen.css";
 
 const CancelledJobsScreen = () => {
   const [cancelledJobs, setCancelledJobs] = useState([]);
@@ -9,14 +9,16 @@ const CancelledJobsScreen = () => {
   useEffect(() => {
     const fetchCancelledJobs = async () => {
       try {
-        const querySnapshot = await getDocs(collection(fireStoreDB, 'CancelJobs_dev'));
-        const jobsData = querySnapshot.docs.map(doc => ({
+        const querySnapshot = await getDocs(
+          collection(fireStoreDB, "CancelJobs_dev")
+        );
+        const jobsData = querySnapshot.docs.map((doc) => ({
           id: doc.id,
-          ...doc.data()
+          ...doc.data(),
         }));
         setCancelledJobs(jobsData);
       } catch (error) {
-        console.error('Error fetching cancelled jobs: ', error);
+        console.error("Error fetching cancelled jobs: ", error);
       }
     };
 
@@ -44,7 +46,7 @@ const CancelledJobsScreen = () => {
           </tr>
         </thead>
         <tbody>
-          {cancelledJobs.map(job => (
+          {cancelledJobs.map((job) => (
             <tr key={job.id}>
               <td>{job.customerName}</td>
               <td>{job.customerEmail}</td>

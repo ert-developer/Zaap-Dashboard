@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { collection, getDocs } from 'firebase/firestore';
-import { fireStoreDB } from '../../firebase/firebase-config'; // Make sure the path to your firebase config is correct
-import './paymentCompletedScreen2222.css';
+import React, { useEffect, useState } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { fireStoreDB } from "../../firebase/firebase-config"; // Make sure the path to your firebase config is correct
+import "./paymentCompletedScreen2222.css";
 
 const PaymentCompletedScreen2 = () => {
   const [paymentDetails, setPaymentDetails] = useState([]);
@@ -9,20 +9,21 @@ const PaymentCompletedScreen2 = () => {
   useEffect(() => {
     const fetchPaymentDetails = async () => {
       try {
-        const querySnapshot = await getDocs(collection(fireStoreDB, 'PaymentDetails_dev'));
-        const detailsData = querySnapshot.docs.map(doc => ({
+        const querySnapshot = await getDocs(
+          collection(fireStoreDB, "PaymentDetails_dev")
+        );
+        const detailsData = querySnapshot.docs.map((doc) => ({
           id: doc.id,
-          ...doc.data()
+          ...doc.data(),
         }));
         setPaymentDetails(detailsData);
       } catch (error) {
-        console.error('Error fetching payment details: ', error);
+        console.error("Error fetching payment details: ", error);
       }
     };
 
     fetchPaymentDetails();
   }, []);
-
 
   return (
     <div className="payment-details-container">
@@ -63,10 +64,13 @@ const PaymentCompletedScreen2 = () => {
               <td>{detail.serviceProviderIFSC}</td>
               <td>{detail.serviceProviderId}</td>
               <td>{detail.serviceProviderName}</td>
-              <td>{detail.TransactionStatus}</td>
-              <td>{detail.Budget}</td>
+              <td>{detail.transactionStatus}</td>
+              <td>{detail.budget}</td>
               <td>{detail.tipAmount}</td>
-              <td>{(parseFloat(detail.Budget) || 0) + (parseFloat(detail.tipAmount) || 0)}</td>
+              <td>
+                {(parseFloat(detail.budget) || 0) +
+                  (parseFloat(detail.tipAmount) || 0)}
+              </td>
             </tr>
           ))}
         </tbody>

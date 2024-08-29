@@ -74,7 +74,9 @@ const VerificationScreen = () => {
           idExpirationDate: docs.data().id_expiration_date,
           dateOfBirth: formattedDate,
           verificationStatus: docs.data().isverified,
-          personalPhoto: docs.data().personal_photo[0],
+          personalPhoto: docs.data()?.personal_photo
+            ? docs.data()?.personal_photo[0]
+            : docs.data()?.imageURL,
           IdFrontImage: docs.data().front[0],
           IdBackImage: docs.data().back[0],
         };

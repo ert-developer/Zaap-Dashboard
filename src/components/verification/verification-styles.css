@@ -7,3 +7,46 @@
   color: #fff;
   cursor: pointer;
 }
+
+.navigation-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+  margin: 0;
+}
+
+.nav-link {
+  margin: 10px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 1px;
+  cursor: pointer;
+  opacity: 0.8;
+  text-decoration: none;
+  border-radius: 20px; /* Ensure the border-radius is applied correctly */
+  padding: 10px 20px; /* Added padding for a better clickable area */
+  transition: all 0.3s ease; /* Smooth transition for hover and active states */
+}
+
+.nav-link.active {
+  opacity: 1;
+  color: black;
+  background-color: #fff;
+  border-radius: 20px; /* Ensure border-radius is applied */
+  padding: 10px 20px; /* Adjusted padding */
+  margin: 10px; /* Ensure margin is applied */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow for depth */
+  font-size: 25;
+}
+
+/* Hover effect for non-active links */
+.nav-link:not(.active):hover {
+  opacity: 1;
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.1
+  ); /* Slight background change on hover */
+}
