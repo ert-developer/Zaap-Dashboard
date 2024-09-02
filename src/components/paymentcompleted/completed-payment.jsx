@@ -26,6 +26,8 @@ const PaymentCompletedScreen2 = () => {
     fetchPaymentDetails();
   }, []);
 
+  console.log(paymentDetails);
+
   return (
     <div className="payment-details-container">
       <h1>Payment Details</h1>
@@ -67,11 +69,11 @@ const PaymentCompletedScreen2 = () => {
               <td>{detail.serviceProviderId}</td>
               <td>{detail.serviceProviderName}</td>
               <td>{detail.transactionStatus}</td>
-              <td>{detail.budget}</td>
+              <td>{detail.salary}</td>
               <td>{detail.tipAmount}</td>
-              <td>{getPlatformFee(detail.budget)}</td>
+              <td>{getPlatformFee(detail.salary)}</td>
               <td>
-                {(parseFloat(detail.budget) || 0) +
+                {(parseFloat(detail.salary) || 0) +
                   (parseFloat(detail.tipAmount) || 0)}
               </td>
             </tr>
