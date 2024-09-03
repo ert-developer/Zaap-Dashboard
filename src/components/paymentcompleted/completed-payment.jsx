@@ -46,6 +46,7 @@ const PaymentCompletedScreen2 = () => {
             <th>Service Provider IFSC</th>
             <th>Service Provider ID</th>
             <th>Service Provider Name</th>
+            <th>SP Mobile Number</th>
             <th>Transaction Status</th>
             <th>Budget</th>
             <th>Tip Amount</th>
@@ -68,6 +69,7 @@ const PaymentCompletedScreen2 = () => {
               <td>{detail.serviceProviderIFSC}</td>
               <td>{detail.serviceProviderId}</td>
               <td>{detail.serviceProviderName}</td>
+              <td>{detail.serviceProviderPhoneNumber}</td>
               <td>{detail.transactionStatus}</td>
               <td>{detail.salary}</td>
               <td>{detail.tipAmount}</td>
