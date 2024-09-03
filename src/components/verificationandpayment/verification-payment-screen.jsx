@@ -46,32 +46,22 @@ const VerificationPaymentContainer = ({ onLogout }) => {
         Logout
       </button>
       <div className="verification-payment-container">
-        <div className="card card1">
-          <p className="card-heading" onClick={onClickVerification}>
-            Verification
-          </p>
+        <div className="card card1" onClick={onClickVerification}>
+          <p className="card-heading">Verification</p>
         </div>
-        <div className="card card2">
-          <p className="card-heading" onClick={onClickPayment}>
-            Payment
-          </p>
+        <div className="card card2" onClick={onClickPayment}>
+          <p className="card-heading">Payment</p>
         </div>
-        <div className="card card3">
-          <p className="card-heading" onClick={onClickCancelledJobs}>
-            Cancelled Jobs
-          </p>
+        <div className="card card3" onClick={onClickCancelledJobs}>
+          <p className="card-heading">Cancelled Jobs</p>
         </div>
       </div>
       <div className="verification-payment-container">
-        <div className="card card1">
-          <p className="card-heading" onClick={onClickFeedback}>
-            Feedback
-          </p>
+        <div className="card card1" onClick={onClickFeedback}>
+          <p className="card-heading">Feedback</p>
         </div>
-        <div className="card card2">
-          <p className="card-heading" onClick={onClickReports}>
-            Reports
-          </p>
+        <div className="card card2" onClick={onClickReports}>
+          <p className="card-heading">Reports</p>
         </div>
       </div>
     </div>
