@@ -7,6 +7,7 @@ import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
 import "./inprogress-styles.css";
 import { mailSenter } from "../../utils/nodemailer/mailSend";
+import { envConfig } from "../../assets/helpers/envApi";
 
 const ProgressScreen = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -91,7 +92,7 @@ const ProgressScreen = () => {
 
       mailSenter(email, subject, textMsg, bodyText);
 
-      const userDocRef = doc(fireStoreDB, "Provider_dev", userId);
+      const userDocRef = doc(fireStoreDB, envConfig.Provider, userId);
 
       try {
         // Update the verification status in the Provider_dev collection
@@ -106,7 +107,7 @@ const ProgressScreen = () => {
 
           if (verificationValue === "verified" && providerId) {
             // Update the isServiceProvider field in the User_dev collection using provider_id
-            const userDevDocRef = doc(fireStoreDB, "User_dev", providerId);
+            const userDevDocRef = doc(fireStoreDB, envConfig.User, providerId);
             await updateDoc(userDevDocRef, {
               isServiceProvider: true,
             });

@@ -11,6 +11,7 @@ import UpdatebankScreen from "../updatebankdetails/updatebankdetails-screen";
 import UpdategovtidScreen from "../updategovtid/updategovtiddetails-screen";
 import PreviousValuesScreen from "../previous/previousValues-screen";
 import moment from "moment";
+import { envConfig } from "../../assets/helpers/envApi";
 
 const VerificationScreen = () => {
   const dispatch = useDispatch();
@@ -29,7 +30,7 @@ const VerificationScreen = () => {
   useEffect(() => {
     const getDataFromFireStoreProviderDev = async () => {
       const providerDevData = await getDocs(
-        collection(fireStoreDB, "Provider_dev")
+        collection(fireStoreDB, envConfig.Provider)
       );
 
       const result = providerDevData.docs.map((docs) => {
@@ -55,7 +56,7 @@ const VerificationScreen = () => {
         const momentDate = moment(dateOnCreate);
         const dateFormate = momentDate.format("YYYY-MM-DD HH:mm:ss");
 
-        console.log('idexpedate', docs.data().id_expiration_date);
+        console.log("idexpedate", docs.data().id_expiration_date);
 
         return {
           createdDate: dateFormate,

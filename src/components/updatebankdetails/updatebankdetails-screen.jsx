@@ -8,13 +8,14 @@ import {
   deleteDoc,
 } from "firebase/firestore";
 import "./updatebankdetails-styles.css";
+import { envConfig } from "../../assets/helpers/envApi";
 
 const UpdatebankScreen = () => {
   const [bankDetails, setBankDetails] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const getBankDetails = async () => {
-    const bankDetailsRef = collection(fireStoreDB, "updateBankDetails_dev");
+    const bankDetailsRef = collection(fireStoreDB, envConfig.updateBankDetails);
     try {
       const bankDetailsSnapshot = await getDocs(bankDetailsRef);
       if (!bankDetailsSnapshot.empty) {
@@ -39,7 +40,7 @@ const UpdatebankScreen = () => {
 
   const handleAccept = async (detail) => {
     try {
-      const providerRef = collection(fireStoreDB, "Provider_dev");
+      const providerRef = collection(fireStoreDB, envConfig.Provider);
       const providerSnapshot = await getDocs(providerRef);
 
       const providerDoc = providerSnapshot.docs.find(
@@ -47,7 +48,11 @@ const UpdatebankScreen = () => {
       );
 
       if (providerDoc) {
-        const providerDocRef = doc(fireStoreDB, "Provider_dev", providerDoc.id);
+        const providerDocRef = doc(
+          fireStoreDB,
+          envConfig.Provider,
+          providerDoc.id
+        );
         const providerData = providerDoc.data();
 
         const previousValues = {
@@ -74,7 +79,9 @@ const UpdatebankScreen = () => {
           previous: updatedPreviousArray,
         });
 
-        await deleteDoc(doc(fireStoreDB, "updateBankDetails_dev", detail.id));
+        await deleteDoc(
+          doc(fireStoreDB, envConfig.updateBankDetails, detail.id)
+        );
 
         setBankDetails((prevDetails) =>
           prevDetails.filter((d) => d.id !== detail.id)
@@ -91,7 +98,7 @@ const UpdatebankScreen = () => {
 
   const handleReject = async (detail) => {
     try {
-      await deleteDoc(doc(fireStoreDB, "updateBankDetails_dev", detail.id));
+      await deleteDoc(doc(fireStoreDB, envConfig.updateBankDetails, detail.id));
 
       setBankDetails((prevDetails) =>
         prevDetails.filter((d) => d.id !== detail.id)

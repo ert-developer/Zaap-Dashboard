@@ -3,6 +3,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { fireStoreDB } from "../../firebase/firebase-config"; // Make sure the path to your firebase config is correct
 import "./paymentCompletedScreen2222.css";
 import getPlatformFee from "./platformfee";
+import { envConfig } from "../../assets/helpers/envApi";
 
 const PaymentCompletedScreen2 = () => {
   const [paymentDetails, setPaymentDetails] = useState([]);
@@ -11,7 +12,7 @@ const PaymentCompletedScreen2 = () => {
     const fetchPaymentDetails = async () => {
       try {
         const querySnapshot = await getDocs(
-          collection(fireStoreDB, "PaymentDetails_dev")
+          collection(fireStoreDB, envConfig.Payments)
         );
         const detailsData = querySnapshot.docs.map((doc) => ({
           id: doc.id,

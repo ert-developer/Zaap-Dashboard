@@ -10,13 +10,17 @@ import {
 import "../inprogress/inprogress-styles.css";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
+import { envConfig } from "../../assets/helpers/envApi";
 
 const UpdateGovtIdScreen = () => {
   const [govtIdDetails, setGovtIdDetails] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const getGovtIdDetails = async () => {
-    const govtIdDetailsRef = collection(fireStoreDB, "updateGovtIdDetails_dev");
+    const govtIdDetailsRef = collection(
+      fireStoreDB,
+      envConfig.updateGovtIdDetails
+    );
     try {
       const govtIdDetailsSnapshot = await getDocs(govtIdDetailsRef);
       if (!govtIdDetailsSnapshot.empty) {
@@ -41,7 +45,7 @@ const UpdateGovtIdScreen = () => {
 
   const handleAccept = async (detail) => {
     try {
-      const providerRef = collection(fireStoreDB, "Provider_dev");
+      const providerRef = collection(fireStoreDB, envConfig.Provider);
       const providerSnapshot = await getDocs(providerRef);
 
       const providerDoc = providerSnapshot.docs.find(
@@ -49,7 +53,11 @@ const UpdateGovtIdScreen = () => {
       );
 
       if (providerDoc) {
-        const providerDocRef = doc(fireStoreDB, "Provider_dev", providerDoc.id);
+        const providerDocRef = doc(
+          fireStoreDB,
+          envConfig.Provider,
+          providerDoc.id
+        );
         const providerData = providerDoc.data();
 
         const previousValues = {
@@ -58,7 +66,9 @@ const UpdateGovtIdScreen = () => {
           id_number: providerData.id_number,
           date_of_birth: providerData.date_of_birth,
           id_expiration_date: providerData.id_expiration_date,
-          personal_photo: providerData.personal_photo,
+          personal_photo: providerData.personal_photo
+            ? providerData.personal_photo[0]
+            : providerData.imageURL,
           front: providerData.front,
           back: providerData.back,
         };
@@ -72,13 +82,15 @@ const UpdateGovtIdScreen = () => {
           id_number: detail.id_number,
           date_of_birth: detail.date_of_birth,
           id_expiration_date: detail.id_expiration_date,
-          personal_photo: detail.personal_photo,
+          personal_photo: [detail.personal_photo[0]],
           front: detail.front,
           back: detail.back,
           previous: updatedPreviousArray,
         });
 
-        await deleteDoc(doc(fireStoreDB, "updateGovtIdDetails_dev", detail.id));
+        await deleteDoc(
+          doc(fireStoreDB, envConfig.updateGovtIdDetails, detail.id)
+        );
 
         setGovtIdDetails((prevDetails) =>
           prevDetails.filter((d) => d.id !== detail.id)
@@ -95,7 +107,9 @@ const UpdateGovtIdScreen = () => {
 
   const handleReject = async (detail) => {
     try {
-      await deleteDoc(doc(fireStoreDB, "updateGovtIdDetails_dev", detail.id));
+      await deleteDoc(
+        doc(fireStoreDB, envConfig.updateGovtIdDetails, detail.id)
+      );
 
       setGovtIdDetails((prevDetails) =>
         prevDetails.filter((d) => d.id !== detail.id)

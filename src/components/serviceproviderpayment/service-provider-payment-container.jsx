@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import moment from "moment";
 import { getServiceProviderWorkDoneDetailsActions } from "../../redux/actions/serviceproviderpaymentactions/service-provider-payment-actions";
 import { useSelector, useDispatch } from "react-redux";
+import { envConfig } from "../../assets/helpers/envApi";
 
 const ServiceProviderPaymentContainer = () => {
   const dispatch = useDispatch();
@@ -26,7 +27,7 @@ const ServiceProviderPaymentContainer = () => {
   const getWorkStartDateDetails = async (jobID) => {
     const serviceProviderWorkStartDetails = collection(
       fireStoreDB,
-      "UsersPayment_dev"
+      envConfig.UsersPayment
     );
     const serviceProviderWorkStartDetailsQuery = query(
       serviceProviderWorkStartDetails,
@@ -71,7 +72,7 @@ const ServiceProviderPaymentContainer = () => {
     );
     if (paymentStatus) {
       const paymentStatusValue = paymentStatus.value;
-      const userDocRef = doc(fireStoreDB, "completedJobs", id);
+      const userDocRef = doc(fireStoreDB, envConfig.completedJobs, id);
       try {
         const userRef = await updateDoc(userDocRef, {
           paymentReceived: paymentStatusValue,
@@ -86,7 +87,10 @@ const ServiceProviderPaymentContainer = () => {
 
   ///////////Get Service Provider Bank Details////////////
   const getServiceProviderBankDetails = async (spID) => {
-    const serviceProviderBankDetails = collection(fireStoreDB, "Provider_dev");
+    const serviceProviderBankDetails = collection(
+      fireStoreDB,
+      envConfig.Provider
+    );
     const getBankDetailsQuery = query(
       serviceProviderBankDetails,
       where("provider_id", "==", spID)
@@ -118,7 +122,7 @@ const ServiceProviderPaymentContainer = () => {
   useEffect(() => {
     const getDataFromCustomerDev = async () => {
       const serviceProvidersPaymentData = await getDocs(
-        collection(fireStoreDB, "completedJobs")
+        collection(fireStoreDB, envConfig.completedJobs)
       );
       const result = serviceProvidersPaymentData.docs.map(async (doc) => {
         const spID = doc.data().candidateUserId;

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { fireStoreDB } from "../../firebase/firebase-config"; // Ensure this path is correct
 import "./AdsPaymentScreen.css"; // Add appropriate CSS for styling
+import { envConfig } from "../../assets/helpers/envApi";
 
 const AdsPaymentScreen = () => {
   const [premiumAds, setPremiumAds] = useState([]);
@@ -10,7 +11,7 @@ const AdsPaymentScreen = () => {
     const fetchPremiumAds = async () => {
       try {
         const querySnapshot = await getDocs(
-          collection(fireStoreDB, "Premium_ads")
+          collection(fireStoreDB, envConfig.Premium_ads)
         );
         const adsData = querySnapshot.docs.map((doc) => ({
           id: doc.id,
