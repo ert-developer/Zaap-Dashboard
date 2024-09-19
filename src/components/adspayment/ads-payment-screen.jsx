@@ -40,7 +40,7 @@ const AdsPaymentScreen = () => {
         </thead>
         <tbody>
           {premiumAds.map((ad) => {
-            const totalAmount = ad.featuredAds * 50 + ad.spotlightAds * 120;
+            const totalAmount = ad.featuredAds * 149 + ad.spotlightAds * 249;
             return (
               <tr key={ad.id}>
                 <td>{ad.id}</td>
