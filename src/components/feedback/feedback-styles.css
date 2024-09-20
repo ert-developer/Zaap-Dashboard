@@ -9,20 +9,13 @@
 }
 
 .feedback-heading {
-  margin: 0px;
-  font-size: 24px;
-  font-weight: bold;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333333; /* Added text color */
   margin-bottom: 16px;
+  /* show it in center */
   text-align: center;
-  color: #fff; /* Added text color */
-  background-color: #0f540f;
-  position: fixed; /* Fix the position at the top */
-  top: 0; /* Align it to the top */
-  left: 0; /* Align it to the left */
-  width: 100%; /* Make it span the full width */
-  z-index: 1000; /* Ensure it stays on top of other elements */
-  padding: 16px; /* Add padding for better appearance */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow for better visibility */
+  margin-bottom: 20px;
 }
 
 .feedback-card {

@@ -1,8 +1,7 @@
 import React from "react";
 import "./reports-styles.css";
 
-const ReportsScreen = ({ reportDetails }) => {
-  console.log(reportDetails);
+const ReportsScreen = ({ reportDetails, deleteJob, removeReport }) => {
   return (
     <div className="reports-container">
       <h2 className="reports-heading">Reports</h2>
@@ -24,8 +23,18 @@ const ReportsScreen = ({ reportDetails }) => {
               </p>
             </div>
             <div className="report-actions">
-              <button className="report-button delete-button">Delete Job</button>
-              <button className="report-button view-button">Remove Report</button>
+              <button
+                className="report-button delete-button"
+                onClick={() => removeReport(report.id)} // Remove only the report
+              >
+                Remove Report
+              </button>
+              <button
+                className="report-button view-button"
+                onClick={() => deleteJob(report.jobTitle, report.id)} // Delete job and related report
+              >
+                Delete Job
+              </button>
             </div>
           </div>
           <p>

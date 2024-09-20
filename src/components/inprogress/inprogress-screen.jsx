@@ -21,31 +21,33 @@ const ProgressScreen = () => {
     );
     if (selectedVerificationStatus) {
       const verificationValue = selectedVerificationStatus.value;
-
+  
       const subject = "Zaap - Service Provider Verification status";
       const textMsg =
         verificationValue === "verified"
           ? "Congratulations your Zaap account has verified successfully. Now you can login to your account and start your services"
-          : "Your Zaap account verification failed because the provided details was not meet the requirements of the service provider";
+          : "Your Zaap account verification failed because the provided details did not meet the requirements of the service provider";
       const bodyText =
         verificationValue === "verified"
           ? "Congratulations your Zaap account has verified successfully. Now you can login to your account and start your services"
-          : "Your Zaap account verification failed because the provided details was not meet the requirements of the service provider";
-
+          : "Your Zaap account verification failed because the provided details did not meet the requirements of the service provider";
+  
       mailSenter(email, subject, textMsg, bodyText);
       const userDocRef = doc(fireStoreDB, "Provider_dev", userId);
-
+  
       try {
-        // Update the verification status in the Provider_dev collection
         await updateDoc(userDocRef, {
           isverified: verificationValue,
+          id_number: "",
+          front: "",
+          back: "",
         });
-
+  
         // Fetch the provider_id from the Provider_dev collection
         const userDocSnapshot = await getDoc(userDocRef);
         if (userDocSnapshot.exists()) {
           const providerId = userDocSnapshot.data().provider_id;
-
+  
           if (verificationValue === "verified" && providerId) {
             // Update the isServiceProvider field in the User_dev collection using provider_id
             const userDevDocRef = doc(fireStoreDB, "User_dev", providerId);
@@ -54,13 +56,14 @@ const ProgressScreen = () => {
             });
           }
         }
-
+  
         setShowPopup(true);
       } catch (error) {
         console.log("This is Update Verify Status Error :", error);
       }
     }
   };
+  
 
   return (
     <div>

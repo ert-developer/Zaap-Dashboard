@@ -2,6 +2,7 @@ import FeedbackScreen from "./feedback-screen";
 import { fireStoreDB } from "../../firebase/firebase-config";
 import { collection, getDocs } from "firebase/firestore";
 import { useState, useEffect } from "react";
+import Home from "../Header/Home";
 
 const FeedbackContainer = () => {
   const [feedbackDetails, setFeedbackDetails] = useState([]);
@@ -29,7 +30,13 @@ const FeedbackContainer = () => {
   useEffect(() => {
     getFeedbackDetails();
   }, []);
-  return <FeedbackScreen feedbackDetails={feedbackDetails} />;
+
+  return (
+    <>
+      <Home />
+      <FeedbackScreen feedbackDetails={feedbackDetails} />
+    </>
+  );
 };
 
 export default FeedbackContainer;

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { fireStoreDB } from "../../firebase/firebase-config";
 import { collection, getDocs } from "firebase/firestore";
 import "./CancelledJobsScreen.css";
+import Home from "../Header/Home";
 
 const CancelledJobsScreen = () => {
   const [cancelledJobs, setCancelledJobs] = useState([]);
@@ -26,6 +27,8 @@ const CancelledJobsScreen = () => {
   }, []);
 
   return (
+    <>
+      <Home />
     <div className="cancelled-jobs-container">
       <h1>Cancelled Jobs</h1>
       <table className="cancelled-jobs-table">
@@ -65,6 +68,7 @@ const CancelledJobsScreen = () => {
         </tbody>
       </table>
     </div>
+    </>
   );
 };
 

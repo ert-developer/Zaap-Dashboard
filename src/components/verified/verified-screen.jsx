@@ -8,7 +8,12 @@ const VerifiedScreen = () => {
     (state) => state.verificationReducer.verificationList
   );
 
-  console.log("This is Verified List :", verifiedList);
+  // Sort the verifiedList by newest first based on the createdDate field
+  const sortedVerifiedList = [...verifiedList].sort((a, b) => {
+    return new Date(b.createdDate) - new Date(a.createdDate); // Descending order
+  });
+
+  console.log("This is Verified List :", sortedVerifiedList);
 
   return (
     <>
@@ -23,25 +28,18 @@ const VerifiedScreen = () => {
           <p className="verified-title acc-holder-name">Acc Holder Name</p>
           <p className="verified-title acc-number">Acc Number</p>
           <p className="verified-title acc-type">Acc Type</p>
-          {/* <p className="verified-title bank-transit-no">Bank Transit Number</p> */}
           <p className="verified-title ifsc-code"> IFSC code</p>
-          {/* <p className="verified-title institute-no"> Institute Number</p> */}
-          <p className="verified-title type-of-govt-id">
-            Type of Govt Issue ID
-          </p>
-          {/* <p className="verified-title govt-doc-name">Document Name</p> */}
+          <p className="verified-title type-of-govt-id">Type of Govt Issue ID</p>
           <p className="verified-title govt-id-no">ID Number</p>
           <p className="verified-title govt-id-no">Profile Image</p>
           <p className="verified-title govt-id-no">ID Front Image</p>
           <p className="verified-title govt-id-no">ID Back Image</p>
-          <p className="verified-title govt-doc-expiry-date">
-            ID Expiration Date
-          </p>
+          <p className="verified-title govt-doc-expiry-date">ID Expiration Date</p>
           <p className="verified-title date-of-birth">DOB</p>
         </div>
         <hr className="verified-horizantal-row" />
         <div>
-          {verifiedList.map((item, index) => {
+          {sortedVerifiedList.map((item, index) => {
             if (item.verificationStatus === "verified") {
               return (
                 <div key={index} style={{ width: "100%" }}>
@@ -51,26 +49,12 @@ const VerifiedScreen = () => {
                     <p className="name">{item.nameOnTheId}</p>
                     <p className="phone-number">{item.phoneNo}</p>
                     <p className="email-address">{item.emailId}</p>
-
                     <p className="bank-name">{item.bankName}</p>
                     <p className="acc-holder-name">{item.accountHolderName}</p>
-                    <p className="verified-user-acc-number">
-                      {item.accountNumber}
-                    </p>
+                    <p className="verified-user-acc-number">{item.accountNumber}</p>
                     <p className="verified-user-acc-type">{item.accountType}</p>
-                    {/* <p className="verified-user-bank-transit-no">
-                      {item.bankTransitNumber}
-                    </p>
-                    <p className="verified-user-institute-no">
-                      {item.institutionNumber}
-                    </p> */}
                     <p className="verified-user-ifsc-code">{item.ifsc_code}</p>
-                    <p className="verified-user-govt-doc-id">
-                      {item.typeOfGovtIssueId}
-                    </p>
-                    {/* <p className="verified-user-doc-name">
-                      {item.documentName}
-                    </p> */}
+                    <p className="verified-user-govt-doc-id">{item.typeOfGovtIssueId}</p>
                     <p className="verified-user-doc-no">{item.docsIdNumber}</p>
                     <div className="verified-user-doc-no">
                       <Zoom>
@@ -99,9 +83,7 @@ const VerifiedScreen = () => {
                         />
                       </Zoom>
                     </div>
-                    <p className="verified-user-doc-expiry-date">
-                      {item.idExpirationDate}
-                    </p>
+                    <p className="verified-user-doc-expiry-date">{item.idExpirationDate}</p>
                     <p className="verified-user-dob">{item.dateOfBirth}</p>
                   </div>
                   <hr className="verified-horizantal-row" />

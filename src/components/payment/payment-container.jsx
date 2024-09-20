@@ -1,7 +1,13 @@
 import PaymentScreen from "./payment-screen";
+import Home from "../Header/Home";
 
 const PaymentContainer = () => {
-  return <PaymentScreen />;
+  return (
+    <>
+      <Home />
+      <PaymentScreen />
+    </>
+  );
 };
 
 export default PaymentContainer;
