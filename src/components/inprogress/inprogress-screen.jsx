@@ -7,6 +7,7 @@ import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
 import "./inprogress-styles.css";
 import { mailSenter } from "../../utils/nodemailer/mailSend";
+import { envConfig } from "../../assets/helpers/envApi";
 
 const ProgressScreen = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -15,26 +16,84 @@ const ProgressScreen = () => {
     (state) => state.verificationReducer.verificationList
   );
 
-  const updateProviderVerificationStatus = async (userId, email) => {
+  const updateProviderVerificationStatus = async (userId, email, name) => {
     const selectedVerificationStatus = document.querySelector(
       'input[name="verificationStatus"]:checked'
     );
     if (selectedVerificationStatus) {
       const verificationValue = selectedVerificationStatus.value;
-  
-      const subject = "Zaap - Service Provider Verification status";
-      const textMsg =
+
+      const subject =
         verificationValue === "verified"
-          ? "Congratulations your Zaap account has verified successfully. Now you can login to your account and start your services"
-          : "Your Zaap account verification failed because the provided details did not meet the requirements of the service provider";
+          ? "Congratulations! Your Background Verification is Complete"
+          : "Important Update: Background Verification Unsuccessful";
+
       const bodyText =
         verificationValue === "verified"
-          ? "Congratulations your Zaap account has verified successfully. Now you can login to your account and start your services"
-          : "Your Zaap account verification failed because the provided details did not meet the requirements of the service provider";
-  
+          ? `
+        Hi ${name},
+        <br><br>
+        We’re thrilled to inform you that your background verification has been successfully completed!
+        Your service provider account is now fully activated, and you’ll notice enhanced options in your
+        side menu to help you manage your services and bookings more efficiently.
+        <br><br>
+        <strong>Important:</strong>
+        <br>
+        Before you begin applying for jobs, we highly recommend updating your portfolio. Your portfolio
+        is a key tool to showcase your skills and experience to potential customers. Here’s what you can
+        include:
+        <ul>
+          <li><strong>Previous Work Experience:</strong> Highlight your expertise and relevant past projects.</li>
+          <li><strong>Photos of Completed Work:</strong> Upload high-quality images that represent your best work.</li>
+          <li><strong>Links to projects:</strong> Provide links to any relevant external work or feedback you’ve received.</li>
+        </ul>
+        Additionally, as you complete jobs on ZAAP, you can monitor your performance and build trust
+        by checking the feedback left by customers in the My Public Profile section. Maintaining a
+        strong reputation will help you secure more opportunities on the platform.
+        <br><br>
+        Once your portfolio is updated, you can explore available job opportunities and start applying
+        right away.
+        <br><br>
+        If you have any questions or need support, feel free to reach out via email at 
+        <a href="mailto:help@zaapondemand.in">help@zaapondemand.in</a>.
+        <br><br>
+        We’re excited to see what you accomplish on ZAAP!
+        <br><br>
+        Best regards,<br>
+        Team ZAAP
+      `
+          : `
+        Hi ${name},
+        <br><br>
+        We hope this message finds you well. Unfortunately, we regret to inform you that your
+        background verification did not pass our screening process. This means we are unable to
+        activate your account for providing services on ZAAP at this time.
+        <br><br>
+        We understand that this may be disappointing news, and we want to assure you that the
+        background verification process is an essential part of ensuring the trust and safety of all users
+        on our platform.
+        <br><br>
+        If you believe there was an error in the verification process, or if you would like to reapply,
+        please feel free to contact our support team at 
+        <a href="mailto:help@zaapondemand.in">help@zaapondemand.in</a>, and we will assist you
+        with the next steps.
+        <br><br>
+        Thank you for your understanding, and we hope to have the opportunity to welcome you on
+        ZAAP in the future.
+        <br><br>
+        Best regards,<br>
+        Team ZAAP
+      `;
+
+      const textMsg =
+        verificationValue === "verified"
+          ? "Congratulations! Your background verification is complete. Update your portfolio and start applying for jobs on ZAAP. Need support? Email us at help@zaapondemand.in."
+          : "Unfortunately, your background verification did not pass our screening. Contact us at help@zaapondemand.in if you believe this is an error or would like to reapply.";
+
       mailSenter(email, subject, textMsg, bodyText);
-      const userDocRef = doc(fireStoreDB, "Provider_dev", userId);
-  
+
+      const userDocRef = doc(fireStoreDB, envConfig.Provider, userId);
+
       try {
         await updateDoc(userDocRef, {
           isverified: verificationValue,
@@ -50,7 +109,7 @@ const ProgressScreen = () => {
   
           if (verificationValue === "verified" && providerId) {
             // Update the isServiceProvider field in the User_dev collection using provider_id
-            const userDevDocRef = doc(fireStoreDB, "User_dev", providerId);
+            const userDevDocRef = doc(fireStoreDB, envConfig.User, providerId);
             await updateDoc(userDevDocRef, {
               isServiceProvider: true,
             });
@@ -214,7 +273,8 @@ const ProgressScreen = () => {
                         onClick={() =>
                           updateProviderVerificationStatus(
                             item.id,
-                            item.emailId
+                            item.emailId,
+                            item.nameOnTheId
                           )
                         }
                       >

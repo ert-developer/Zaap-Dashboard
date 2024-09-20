@@ -3,6 +3,7 @@ import { fireStoreDB } from "../../firebase/firebase-config";
 import { collection, getDocs } from "firebase/firestore";
 import "./CancelledJobsScreen.css";
 import Home from "../Header/Home";
+import { envConfig } from "../../assets/helpers/envApi";
 
 const CancelledJobsScreen = () => {
   const [cancelledJobs, setCancelledJobs] = useState([]);
@@ -11,7 +12,7 @@ const CancelledJobsScreen = () => {
     const fetchCancelledJobs = async () => {
       try {
         const querySnapshot = await getDocs(
-          collection(fireStoreDB, "CancelJobs_dev")
+          collection(fireStoreDB, envConfig.CancelJobs)
         );
         const jobsData = querySnapshot.docs.map((doc) => ({
           id: doc.id,

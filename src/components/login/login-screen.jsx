@@ -3,6 +3,7 @@ import { fireStoreDB } from "../../firebase/firebase-config";
 import { doc, getDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import "./login-styles.css";
+import { envConfig } from "../../assets/helpers/envApi";
 
 const LoginScreen = ({ onLogin }) => {
   const navigate = useNavigate();
@@ -20,7 +21,11 @@ const LoginScreen = ({ onLogin }) => {
 
   const emailLogin = async () => {
     try {
-      const userCredDocRef = doc(fireStoreDB, "Dashboard_users", "user_creds");
+      const userCredDocRef = doc(
+        fireStoreDB,
+        envConfig.Dashboard_users,
+        "user_creds"
+      );
       const userCredDoc = await getDoc(userCredDocRef);
 
       if (userCredDoc.exists()) {

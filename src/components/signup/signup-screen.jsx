@@ -3,6 +3,7 @@ import { doc, setDoc } from "firebase/firestore";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth, fireStoreDB as db } from "../../firebase/firebase-config"; // Ensure Firestore is initialized
+import { envConfig } from "../../assets/helpers/envApi";
 
 const SignUpScreen = () => {
   const navigate = useNavigate();
@@ -33,7 +34,7 @@ const SignUpScreen = () => {
       await updateProfile(user, { displayName: userName });
 
       // Add user data to Firestore in the Dashboard_users collection
-      await setDoc(doc(db, "Dashboard_users", user.uid), {
+      await setDoc(doc(db, envConfig.Dashboard_users, user.uid), {
         uid: user.uid,
         email: user.email,
         displayName: userName,

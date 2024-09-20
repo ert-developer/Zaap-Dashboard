@@ -4,6 +4,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import moment from "moment";
 import PaymentNavbar from "../paymentnavbar/payment-nav-bar-screen";
+import { envConfig } from "../../assets/helpers/envApi";
 
 const CustomerPaymentScreen = () => {
   const [customerPaymentList, setCustomerPaymentList] = useState([]);
@@ -20,7 +21,7 @@ const CustomerPaymentScreen = () => {
   useEffect(() => {
     const getDataFromCustomerDev = async () => {
       const customersPaymentData = await getDocs(
-        collection(fireStoreDB, "UsersPayment_dev")
+        collection(fireStoreDB, envConfig.UsersPayment)
       );
       const result = customersPaymentData.docs.map((doc) => {
         const createdTimestamp = doc.data().createdOn;

@@ -3,13 +3,14 @@ import { fireStoreDB } from "../../firebase/firebase-config";
 import { collection, getDocs } from "firebase/firestore";
 import { useState, useEffect } from "react";
 import Home from "../Header/Home";
+import { envConfig } from "../../assets/helpers/envApi";
 
 const FeedbackContainer = () => {
   const [feedbackDetails, setFeedbackDetails] = useState([]);
 
   ///get feedback details from firestore
   const getFeedbackDetails = async () => {
-    const feedbackDetailsRef = collection(fireStoreDB, "feedback_dev");
+    const feedbackDetailsRef = collection(fireStoreDB, envConfig.feedback);
     try {
       const feedbackDetailsSnapshot = await getDocs(feedbackDetailsRef);
       if (!feedbackDetailsSnapshot.empty) {

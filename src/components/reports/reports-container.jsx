@@ -3,12 +3,13 @@ import { fireStoreDB } from "../../firebase/firebase-config";
 import { collection, getDocs, deleteDoc, doc, query, where } from "firebase/firestore";
 import { useState, useEffect } from "react";
 import Home from "../Header/Home";
+import { envConfig } from "../../assets/helpers/envApi";
 
 const ReportsContainer = () => {
   const [reportDetails, setReportDetails] = useState([]);
 
   const getReportDetails = async () => {
-    const reportDetailsRef = collection(fireStoreDB, "job_report_dev");
+    const reportDetailsRef = collection(fireStoreDB, envConfig.job_reports);
     try {
       const reportDetailsSnapshot = await getDocs(reportDetailsRef);
       if (!reportDetailsSnapshot.empty) {
