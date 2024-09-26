@@ -66,47 +66,49 @@ const PaymentCompletedScreen2 = () => {
             <th>Service Provider Name</th>
             <th>SP Mobile Number</th>
             <th>Transaction Status</th>
-            <th>Budget</th>
-            <th>Tip Amount</th>
-            <th>PlatForm Fee</th>
-            <th>Total Amount</th>
-            <th>Action</th>
+            {/* <th>Action</th> */}
+            <th>Total Paid by Customer</th>
+            <th>SP Payout</th>
           </tr>
         </thead>
         <tbody>
-          {paymentDetails.map((detail) => (
-            <tr key={detail.id}>
-              <td>{detail.customerID}</td>
-              <td>{detail.customerName}</td>
-              <td>{formatFinishedTime(detail.finishedTime)}</td>
-              <td>{detail.jobDescription}</td>
-              <td>{detail.jobID}</td>
-              <td>{detail.jobTitle}</td>
-              <td>{detail.serviceProviderAccount}</td>
-              <td>{detail.serviceProviderBank}</td>
-              <td>{detail.serviceProviderEmail}</td>
-              <td>{detail.serviceProviderIFSC}</td>
-              <td>{detail.serviceProviderId}</td>
-              <td>{detail.serviceProviderName}</td>
-              <td>{detail.serviceProviderPhoneNumber}</td>
-              <td>{detail.transactionStatus}</td>
-              <td>{detail.salary}</td>
-              <td>{detail.tipAmount}</td>
-              <td>{getPlatformFee(detail.salary)}</td>
-              <td>
-                {(parseFloat(detail.salary) || 0) +
-                  (parseFloat(detail.tipAmount) || 0)}
-              </td>
-              <td>
-                <button
-                  className="payment-completed-button"
-                  onClick={() => handleRemovePayment(detail.id)}
-                >
-                  Payment Completed
-                </button>
-              </td>
-            </tr>
-          ))}
+          {paymentDetails.map((detail) => {
+            const budget = parseFloat(detail.salary) || 0;
+            const tip = parseFloat(detail.tipAmount) || 0;
+            const platformFee = getPlatformFee(budget);
+            const totalPaid = budget + tip - platformFee; // Total paid by customer
+            const spPayout = budget + tip - platformFee * 2; // SP Payout
+
+            return (
+              <tr key={detail.id}>
+                <td>{detail.customerID}</td>
+                <td>{detail.customerName}</td>
+                <td>{formatFinishedTime(detail.finishedTime)}</td>
+                <td>{detail.jobDescription}</td>
+                <td>{detail.jobID}</td>
+                <td>{detail.jobTitle}</td>
+                <td>{detail.serviceProviderAccount}</td>
+                <td>{detail.serviceProviderBank}</td>
+                <td>{detail.serviceProviderEmail}</td>
+                <td>{detail.serviceProviderIFSC}</td>
+                <td>{detail.serviceProviderId}</td>
+                <td>{detail.serviceProviderName}</td>
+                <td>{detail.serviceProviderPhoneNumber}</td>
+                <td>{detail.transactionStatus}</td>
+                <td>
+                  <div className="tooltip">
+                    {totalPaid.toFixed(2)}
+                    <span className="tooltiptext">
+                      Budget: {budget.toFixed(2)}<br />
+                      Tip: {tip.toFixed(2)}<br />
+                      Platform Fee: {platformFee.toFixed(2)}
+                    </span>
+                  </div>
+                </td>
+                <td>{spPayout.toFixed(2)}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>
