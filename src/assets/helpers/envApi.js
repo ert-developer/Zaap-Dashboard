@@ -1,4 +1,4 @@
-const envType = "dev"; // dev | uat | prod
+const envType = "prod"; // dev | uat | prod
 let envConfig;
 
 switch (envType) {
