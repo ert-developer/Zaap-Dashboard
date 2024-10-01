@@ -76,8 +76,8 @@ const PaymentCompletedScreen2 = () => {
             const budget = parseFloat(detail.salary) || 0;
             const tip = parseFloat(detail.tipAmount) || 0;
             const platformFee = getPlatformFee(budget);
-            const totalPaid = budget + tip - platformFee; // Total paid by customer
-            const spPayout = budget + tip - platformFee * 2; // SP Payout
+            const totalPaid = budget + tip + platformFee; // Total paid by customer
+            const spPayout = budget + tip - platformFee; // SP Payout
 
             return (
               <tr key={detail.id}>
