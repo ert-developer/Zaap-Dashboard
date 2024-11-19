@@ -21,7 +21,7 @@ const CustomerPaymentScreen = () => {
   useEffect(() => {
     const getDataFromCustomerDev = async () => {
       const customersPaymentData = await getDocs(
-        collection(fireStoreDB, envConfig.Payment)
+        collection(fireStoreDB, envConfig.Payments)
       );
       const result = customersPaymentData.docs.map((doc) => {
         const createdTimestamp = doc.data().createdOn;
