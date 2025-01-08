@@ -1,4 +1,4 @@
-const envType = "dev"; // dev | uat | prod
+const envType = import.meta.env.VITE_MODE; // dev | uat | prod
 let envConfig;
 
 switch (envType) {
